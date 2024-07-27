@@ -3,89 +3,62 @@ import Image from "next/image";
 import Logo from "../../public/Assets/Logo/logo.png"
 import { useState } from "react";
 
-export default function Home() {
+
+export default function main() {
+  return(
+    Navigation(),
+    home()
+  )
+}
+
+
+
+
+function Navigation() {
   const [open, isOpen] = useState(false);
   return (
-    <header>
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 relative">
+    <nav className="bg-slate-50">
       <div className="max-w-screen-xl flex flex-wrap items-center  mx-auto p-4">
-      <Image src={Logo} width={50} height={50} alt="logo"/>
-      {open?(
-        <div className="md:hidden">
-            <ul 
-            className="absolute top-6 right-20 font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50
-             md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <button>
-                
+        <Image src={Logo} width={50} height={50} alt="logo"/>
+        {open?(
+          <div className="md:hidden">
+              <ul className={open ? "z-50 flex flex-col gap-10 w-3/5 fixed right-0 top-0 bottom-0 h-90 px-4 font-semibold bg-slate-800 pt-10" : "hidden"}>
+              <li>
+              <button onClick={(e) => isOpen(!open)} className="md:hidden -space-y-1 absolute left-0 top-0 h-14 gap-10 -mt-1 ml-2 z-50">
+                <span className="block h-1 w-8 bg-gray-600 -rotate-45"></span>
+                <span className="block h-1 w-8 bg-gray-600 rotate-45"></span>
               </button>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >Home</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-            </li>
-          </ul>
-        </div>
-      ):(
-        <button onClick={(e)=> isOpen(true)}
-          data-collapse-toggle="navbar-default" type="button" 
-          className="inline-flex items-center p-2 w-10 h-10 justify-center absolute top-5 right-5 text-sm text-gray-500 
-          rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400
-           dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span className="sr-only">Open main menu</span>
-            <svg 
-              className="w-5 h-5" 
-              aria-hidden="true" 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>  
-      )}
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul 
-              className="absolute top-6 right-20 font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50
-              md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                  aria-current="page"
-                >Home</a>
               </li>
-              <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-              </li>
+              <li><a href="#" className="block hover:border-b-2 border-blue-500 focus:text-cyan-800 focus:border-b-2">Home</a></li>
+              <li><a href="#" className="block hover:border-b-2 border-blue-500 focus:text-cyan-800 focus:border-b-2">About</a></li>
+              <li><a href="#" className="block hover:border-b-2 border-blue-500 focus:text-cyan-800 focus:border-b-2">Skill</a></li>
+              <li><a href="#" className="block hover:border-b-2 border-blue-500 focus:text-cyan-800 focus:border-b-2">Experience</a></li>
+              <li><a href="#" className="block hover:border-b-2 border-blue-500 focus:text-cyan-800 focus:border-b-2">Contact</a></li>
             </ul>
           </div>
+        ):(
+          <button onClick={(e)=> isOpen(true)} className="md:hidden space-y-2 absolute right-6 top-6">
+              <span className="block h-1 w-8 bg-gray-600"></span>
+              <span className="block h-1 w-8 bg-gray-600"></span>
+              <span className="block h-1 w-8 bg-gray-600"></span>
+          </button>  
+        )}
+          <ul className="hidden md:flex justify-end w-4/5 gap-10">
+            <li><a href="#" className="text-black bg-transparent hover:border-b-2 border-blue-500">Home</a></li>
+            <li><a href="#" className="text-black bg-transparent hover:border-b-2 border-blue-500">About</a></li>
+            <li><a href="#" className="text-black bg-transparent hover:border-b-2 border-blue-500">Skill</a></li>
+            <li><a href="#" className="text-black bg-transparent hover:border-b-2 border-blue-500">Experience</a></li>
+            <li><a href="#" className="text-black bg-transparent hover:border-b-2 border-blue-500">Contact</a></li>
+          </ul>
       </div>
     </nav>
-
-  </header>
   );
+}
+
+function home() {
+  return(
+   <div className="bg-white">
+    <h1 className="text-black">halo</h1>
+   </div> 
+  )
 }
